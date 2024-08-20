@@ -42,6 +42,15 @@ export default function ClientSideFetching() {
 						The browser is in charge of handling the request. This
 						can take longer for data to load
 					</p>
+
+					<div>
+						<h3>Main Purpose</h3>
+					</div>
+					<p>
+						{' '}
+						Use for subsequent client-side data fetching or polling
+						after the page loads.
+					</p>
 				</div>
 
 				<div className='grid gap-4'>

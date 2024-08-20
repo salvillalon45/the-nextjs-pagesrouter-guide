@@ -1,26 +1,72 @@
-import { Users } from '@/types/types';
+import { Posts } from '@/types/types';
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 
 export async function getServerSideProps() {
 	console.log('---------------------------');
 	console.log('Runs on every request to the page');
 	console.log('---------------------------');
-	const res = await fetch('https://jsonplaceholder.typicode.com/users');
-	const data = (await res.json()) as Users;
+	// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+	const res = await fetch('http://localhost:3000/api/posts');
+	const data = (await res.json()) as Posts;
+	console.log({ data });
 
 	return {
 		props: {
-			data
+			initialPosts: data
 		}
 	};
 }
 
 interface ServerSideRenderingExampleProps {
-	data: Users;
+	initialPosts: Posts;
 }
 
-function ServerSideRenderingExample({ data }: ServerSideRenderingExampleProps) {
-	// console.log({ data });
+function ServerSideRenderingExample({
+	initialPosts
+}: ServerSideRenderingExampleProps) {
+	const [posts, setPosts] = useState(initialPosts);
+	const [newPostTitle, setNewPostTitle] = useState('');
+	const [newPostBody, setNewPostBody] = useState('');
+	const [newPostCreated, setNewPostCreated] = useState(false);
+
+	async function handleNewPost(event: { preventDefault: () => void }) {
+		event.preventDefault();
+
+		const response = await fetch(
+			// 'https://jsonplaceholder.typicode.com/posts',
+			'http://localhost:3000/api/posts',
+			{
+				method: 'POST',
+				body: JSON.stringify({
+					title: newPostTitle,
+					body: newPostBody,
+					userId: 1
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8'
+				}
+			}
+		);
+		console.log({ response });
+		setNewPostCreated(true);
+	}
+
+	useEffect(() => {
+		async function handleGetPosts() {
+			const res = await fetch(
+				// 'https://jsonplaceholder.typicode.com/posts'
+				'http://localhost:3000/api/posts'
+			);
+			const data = (await res.json()) as Posts;
+			console.log('incoming posts', { posts: data });
+			setPosts(data);
+			setNewPostCreated(false);
+		}
+
+		handleGetPosts();
+	}, [newPostCreated]);
+
 	return (
 		<>
 			<Head>
@@ -48,11 +94,39 @@ function ServerSideRenderingExample({ data }: ServerSideRenderingExampleProps) {
 						<div>
 							<h3>getServerSideProps() Explanation</h3>
 						</div>
-						<p>This functions runs on every request to the page.</p>
+
+						<div className='grid gap-2'>
+							<p>
+								This functions runs on every request to the
+								page.
+							</p>
+							<p>
+								Server side rendering is particularly useful
+								when you need to fetch data that changes
+								frequently or is personalized for each request.
+								For example:
+							</p>
+							<ul>
+								<li>
+									<b>Constantly Changing Data</b>: Your page
+									needs to display data that is constantly
+									changing, such as stock prices, weather
+									data, or the latest news articles.
+								</li>
+								<li>
+									<b>Live Sports Page</b> A live sports score
+									page where the latest scores are fetched
+									each time the page is loaded.
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<h3>Main Purpose</h3>
+						</div>
 						<p>
-							Server side rendering is better when you{' '}
-							<b>data is dynamic</b>, such as the user updating
-							their name and it immediately needs to be reflected.
+							getServerSideProps is for initial data fetching
+							during page load or navigation.{' '}
 						</p>
 					</div>
 				</div>
@@ -79,16 +153,57 @@ function ServerSideRenderingExample({ data }: ServerSideRenderingExampleProps) {
 						<hr />
 					</div>
 					<p>
+						Here is an example using getServerSideProps with
+						useEffect() to make a form submission{' '}
+					</p>
+					<p>
 						Since data is already loaded, there is no flickering.
 						Compare this to the client-side-fetching route
 					</p>
+
+					<form action='POST' onSubmit={handleNewPost}>
+						<label htmlFor='postTitle'>Title</label>
+						<input
+							name='postTitle'
+							type='text'
+							value={newPostTitle}
+							onChange={(e) => {
+								setNewPostTitle(e.target.value);
+							}}
+						/>
+
+						<label htmlFor='postBody'>Body</label>
+						<input
+							name='postBody'
+							type='text'
+							value={newPostBody}
+							onChange={(e) => {
+								setNewPostBody(e.target.value);
+							}}
+						/>
+						<input type='submit' />
+					</form>
+
 					<div className=''>
 						<p>
-							<b>List of Users</b>
+							<b>List of Posts</b>
 						</p>
 						<ul>
-							{data.map((user) => {
-								return <li key={user.id}>{user.name}</li>;
+							{posts.map((post, index) => {
+								return (
+									<li key={post.id}>
+										<p>Post {index}</p>
+										<p>
+											<b>Title:</b>
+										</p>
+										<p>{post.title}</p>
+
+										<p>
+											<b>Body:</b>
+										</p>
+										<p>{post.body}</p>
+									</li>
+								);
 							})}
 						</ul>
 					</div>

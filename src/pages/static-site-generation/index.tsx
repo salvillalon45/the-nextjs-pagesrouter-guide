@@ -45,14 +45,42 @@ function StaticSiteGenerationExample({
 							of the individual pages for your websites.
 						</p>
 
-						<div>
+						<div className='grid gap-2'>
 							<h3>getStaticProps() Explanation</h3>
+
 							<p>This functions runs at build time!</p>
 							<p>
-								getStaticProps() is better when your{' '}
-								<b>data is static</b>, such as a blog post.
+								getStaticProps() is primarily used in Next.js to
+								fetch data at build time, making it ideal for
+								static content that does not change often. For
+								example:
 							</p>
+							<ul>
+								<li>
+									<b>Documentation Sites:</b> Technical
+									documentation where the content updates
+									infrequently.
+								</li>
+								<li>
+									<b>Marketing Pages:</b> Landing pages or
+									informational pages where the content is
+									mostly static.
+								</li>
+								<li>
+									<b>Blog Posts:</b> Blog posts whose content
+									does not change often
+								</li>
+							</ul>
 						</div>
+
+						<div>
+							<h3>Main Purpose</h3>
+						</div>
+						<p>
+							getStaticProps fetch data at build time that does
+							not change often (not dynamic)
+						</p>
+						<p></p>
 					</div>
 				</div>
 

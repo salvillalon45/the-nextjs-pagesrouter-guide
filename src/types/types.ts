@@ -23,3 +23,11 @@ export interface User {
 }
 
 export type Users = Array<User>;
+
+export interface Post {
+	userId: number;
+	id: number;
+	title: string;
+	body: string;
+}
+export type Posts = Array<Post>;
