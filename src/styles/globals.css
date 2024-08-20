@@ -3,31 +3,109 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
+
+/* /@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap"); */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	background: #f2f2f2;
+	color: #333;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+/*
+  Here it centralizes all the content on the page in one
+  central column of this width!
+ */
+.content {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+nav {
+	margin: 10px auto 80px;
+	padding: 10px 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	border-bottom: 1px solid #ddd;
+	gap: 1rem;
+}
+
+/* Put logo all the way to the left */
+nav .logo {
+	margin-right: auto;
+}
+
+footer {
+	display: block;
+	text-align: center;
+	padding: 30px 0;
+	margin-top: 60px;
+	color: #777;
+	border-top: 1px solid #eaeaea;
+}
+
+main h1 {
+	font-size: 3em;
+	margin-bottom: 1rem;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+h3 {
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+.not-found {
+	text-align: center;
+}
+.not-found a {
+	color: #4979ff;
+	text-decoration: underline;
+}
+.not-found h2 {
+	margin-bottom: 1rem;
+}
+
+hr {
+	background-color: black;
+	height: 2px;
+}
+
+ul {
+	list-style: disc;
+	margin: unset;
+}
+
+ul li {
+	margin-left: 2rem;
+}
+
+ul li a {
+	color: cornflowerblue;
+}
+
+ul li a:hover {
+	text-decoration: outline;
 }
