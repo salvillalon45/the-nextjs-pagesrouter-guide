@@ -2,14 +2,11 @@
 import { Posts } from '@/types/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-interface PostData {
-	postTitle: string;
-	postBody: string;
+interface PostsDBData {
+	data: Posts;
 }
 
-let posts: {
-	data: Posts;
-} = {
+const postsDBData: PostsDBData = {
 	data: [
 		{
 			userId: 1,
@@ -31,27 +28,33 @@ let posts: {
 		}
 	]
 };
+
 export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<Posts>
 ) {
 	const { body, method } = req;
+	const { data: posts } = postsDBData;
+
 	if (method === 'POST') {
-		// Process a POST request
 		const { title, body: postBody } = body;
+		const id = posts.length + 1;
+
 		const newPost = {
-			userId: 2,
-			id: posts.data.length + 1,
+			userId: id,
+			id,
 			title,
 			body: postBody
 		};
 
-		posts.data = [...posts.data, newPost];
-		res.status(200).json(posts.data);
+		postsDBData.data = [...posts, newPost];
+		const { data } = postsDBData;
+
+		res.status(200).json(data);
 	} else if (method === 'GET') {
-		// Handle any other HTTP method
-		res.status(200).json(posts.data);
+		res.status(200).json(posts);
 	} else {
+		// Handle any other HTTP method
 		res.setHeader('Allow', ['GET', 'POST']);
 		res.status(405).end(`Method ${method} Not Allowed`);
 	}

@@ -6,10 +6,9 @@ export async function getServerSideProps() {
 	console.log('---------------------------');
 	console.log('Runs on every request to the page');
 	console.log('---------------------------');
-	// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+
 	const res = await fetch('http://localhost:3000/api/posts');
 	const data = (await res.json()) as Posts;
-	console.log({ data });
 
 	return {
 		props: {
@@ -33,33 +32,26 @@ function ServerSideRenderingExample({
 	async function handleNewPost(event: { preventDefault: () => void }) {
 		event.preventDefault();
 
-		const response = await fetch(
-			// 'https://jsonplaceholder.typicode.com/posts',
-			'http://localhost:3000/api/posts',
-			{
-				method: 'POST',
-				body: JSON.stringify({
-					title: newPostTitle,
-					body: newPostBody,
-					userId: 1
-				}),
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8'
-				}
+		await fetch('http://localhost:3000/api/posts', {
+			method: 'POST',
+			body: JSON.stringify({
+				title: newPostTitle,
+				body: newPostBody,
+				userId: 1
+			}),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8'
 			}
-		);
-		console.log({ response });
+		});
+
 		setNewPostCreated(true);
 	}
 
 	useEffect(() => {
 		async function handleGetPosts() {
-			const res = await fetch(
-				// 'https://jsonplaceholder.typicode.com/posts'
-				'http://localhost:3000/api/posts'
-			);
+			const res = await fetch('http://localhost:3000/api/posts');
 			const data = (await res.json()) as Posts;
-			console.log('incoming posts', { posts: data });
+
 			setPosts(data);
 			setNewPostCreated(false);
 		}
@@ -161,27 +153,40 @@ function ServerSideRenderingExample({
 						Compare this to the client-side-fetching route
 					</p>
 
-					<form action='POST' onSubmit={handleNewPost}>
-						<label htmlFor='postTitle'>Title</label>
-						<input
-							name='postTitle'
-							type='text'
-							value={newPostTitle}
-							onChange={(e) => {
-								setNewPostTitle(e.target.value);
-							}}
-						/>
+					<h3>Create a new post test</h3>
+					<form
+						className='grid gap-4'
+						action='POST'
+						onSubmit={handleNewPost}
+					>
+						<div className='flex gap-4'>
+							<label htmlFor='postTitle'>Title</label>
+							<input
+								className='border-'
+								name='postTitle'
+								type='text'
+								value={newPostTitle}
+								onChange={(e) => {
+									setNewPostTitle(e.target.value);
+								}}
+							/>
+						</div>
 
-						<label htmlFor='postBody'>Body</label>
-						<input
-							name='postBody'
-							type='text'
-							value={newPostBody}
-							onChange={(e) => {
-								setNewPostBody(e.target.value);
-							}}
-						/>
-						<input type='submit' />
+						<div className='flex gap-4'>
+							<label htmlFor='postBody'>Body</label>
+							<input
+								name='postBody'
+								type='text'
+								value={newPostBody}
+								onChange={(e) => {
+									setNewPostBody(e.target.value);
+								}}
+							/>
+						</div>
+
+						<div>
+							<input type='submit' className='button' />
+						</div>
 					</form>
 
 					<div className=''>
