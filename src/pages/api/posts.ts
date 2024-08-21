@@ -12,7 +12,7 @@ const postsDBData: PostsDBData = {
 			userId: 1,
 			id: 1,
 			title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-			body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
+			body: 'Creating a visually appealing and informative tutorial can be a rewarding experience. By carefully planning your content, choosing the right tools, and capturing high-quality images or videos, you can effectively guide viewers through a process. Remember to keep your explanations clear and concise, and use a conversational tone to engage your audience.'
 		},
 		{
 			userId: 1,

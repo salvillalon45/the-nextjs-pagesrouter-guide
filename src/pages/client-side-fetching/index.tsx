@@ -6,13 +6,12 @@ export default function ClientSideFetching() {
 	const [data, setData] = useState<Users>([]);
 
 	useEffect(() => {
-		console.log('inside useEffect');
 		async function handleRequest() {
 			const res = await fetch(
 				'https://jsonplaceholder.typicode.com/users'
 			);
+
 			const data = (await res.json()) as Users;
-			console.log({ data });
 			setData(data);
 		}
 
@@ -22,7 +21,9 @@ export default function ClientSideFetching() {
 	return (
 		<>
 			<Head>
-				<title>The Next.js Guide | Client Side Fetching</title>
+				<title>
+					The Next.js Guide: Pages Router | Client Side Fetching
+				</title>
 				<meta name='keywords' content='Client Side Fetching' />
 			</Head>
 
@@ -40,7 +41,10 @@ export default function ClientSideFetching() {
 					</p>
 					<p>
 						The browser is in charge of handling the request. This
-						can take longer for data to load
+						can take longer for data to load. Client-side fetching
+						happens after the page is loaded in the browser, often
+						used for data that does not need to be available at the
+						initial render.
 					</p>
 
 					<div>
@@ -55,12 +59,12 @@ export default function ClientSideFetching() {
 
 				<div className='grid gap-4'>
 					<div>
-						<h2>Console.logs and Debugging</h2>
+						<h2>Console.log and Debugging</h2>
 						<hr />
 					</div>
 					<p>
-						Here you will console.logs since the browser is doing
-						the request
+						Here you will console.log statements since the browser
+						is doing the request
 					</p>
 				</div>
 
@@ -70,9 +74,11 @@ export default function ClientSideFetching() {
 						<hr />
 					</div>
 					<p>
-						Data is not yet loaded. There will be a flickering. This
-						is when you will need to use spinners and loading state
-						variables to determine what content to show
+						When using client-side fetching, it is common to
+						encounter a brief delay before the data is available.
+						During this time, displaying a loading indicator can
+						improve user experience by providing feedback that data
+						is being fetched.
 					</p>
 					<div>
 						<p>

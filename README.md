@@ -17,4 +17,8 @@ I created the following Routes:
 -   static-site-generation: Explains how Static Site Generation is done and how data can be loaded
 -   intro: Brief intro to Next.js in my own words
 
-To run the sample application do `npm run dev`
+To run the application
+
+-   Clone the repo
+-   do `npm install`
+-   do `npm run dev`

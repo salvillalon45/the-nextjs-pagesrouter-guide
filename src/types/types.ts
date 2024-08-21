@@ -31,3 +31,10 @@ export interface Post {
 	body: string;
 }
 export type Posts = Array<Post>;
+export interface Blog {
+	userId: number;
+	id: number;
+	title: string;
+	body: string;
+}
+export type Blogs = Array<Blog>;

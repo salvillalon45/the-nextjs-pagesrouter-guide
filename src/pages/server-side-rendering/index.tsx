@@ -62,7 +62,9 @@ function ServerSideRenderingExample({
 	return (
 		<>
 			<Head>
-				<title>The Next.js Guide | Server Side Rendering</title>
+				<title>
+					The Next.js Guide: Pages Router | Server Side Rendering
+				</title>
 				<meta name='keywords' content='Server Side Rendering' />
 			</Head>
 
@@ -174,14 +176,15 @@ function ServerSideRenderingExample({
 
 						<div className='flex gap-4'>
 							<label htmlFor='postBody'>Body</label>
-							<input
+							<textarea
 								name='postBody'
-								type='text'
 								value={newPostBody}
+								rows={5}
+								cols={33}
 								onChange={(e) => {
 									setNewPostBody(e.target.value);
 								}}
-							/>
+							></textarea>
 						</div>
 
 						<div>
@@ -196,18 +199,21 @@ function ServerSideRenderingExample({
 						<ul>
 							{posts.map((post, index) => {
 								return (
-									<li key={post.id}>
-										<p>Post {index}</p>
-										<p>
-											<b>Title:</b>
-										</p>
-										<p>{post.title}</p>
+									<>
+										<li key={post.id}>
+											<p>Post {index}</p>
+											<p>
+												<b>Title:</b>
+											</p>
+											<p>{post.title}</p>
 
-										<p>
-											<b>Body:</b>
-										</p>
-										<p>{post.body}</p>
-									</li>
+											<p>
+												<b>Body:</b>
+											</p>
+											<p>{post.body}</p>
+										</li>
+										<hr />
+									</>
 								);
 							})}
 						</ul>

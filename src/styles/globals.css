@@ -119,4 +119,30 @@ ul li a:hover {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+	cursor: pointer;
+	border-radius: 8%;
+}
+.button:hover {
+	background-color: lightblue;
+}
+
+.title {
+	color: #333;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.text {
+	color: #777;
+}
+
+.btn {
+	display: block;
+	width: 150px;
+	padding: 8px 0;
+	margin: 20px auto;
+	background: #4979ff;
+	border-radius: 4px;
+	color: white;
+	text-align: center;
 }

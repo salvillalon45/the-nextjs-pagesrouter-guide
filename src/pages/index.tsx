@@ -1,14 +1,13 @@
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import Head from 'next/head';
 
 export default function Home() {
-	const { title, text, btn } = styles;
+	const { title, text } = styles;
 
 	return (
 		<>
 			<Head>
-				<title>The NextJS Guide (Pages Router) | Home </title>
+				<title>The Next.js Guide: Pages Router | Home </title>
 				<meta name='keywords' content='the nextjs guide' />
 			</Head>
 
