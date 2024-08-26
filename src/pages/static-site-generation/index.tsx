@@ -9,10 +9,9 @@ export async function getStaticProps() {
 	console.log('This runs only on build!');
 	console.log('---------------------------');
 	console.log(process.env.NEXT_PUBLIC_BASE_API_URL);
-	const res = await fetch(`/api/blogs`);
-	// const res = await fetch(
-	// 	`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs`
-	// );
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs`
+	);
 	const data = (await res.json()) as Blogs;
 
 	return {

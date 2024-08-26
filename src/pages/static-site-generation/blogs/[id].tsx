@@ -2,10 +2,9 @@ import { Blog, Blogs } from '@/types/types';
 import Head from 'next/head';
 
 export async function getStaticPaths() {
-	const res = await fetch(`/api/blogs`);
-	// const res = await fetch(
-	// 	`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs`
-	// );
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs`
+	);
 	const data = (await res.json()) as Blogs;
 
 	// paths represents the dynamic routes
@@ -31,10 +30,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: { params: { id: any } }) {
 	const { id } = context.params;
 
-	const res = await fetch(`/api/blogs/${id}`);
-	// const res = await fetch(
-	// 	`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs/${id}`
-	// );
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs/${id}`
+	);
 	const data = (await res.json()) as Blog;
 
 	return {
