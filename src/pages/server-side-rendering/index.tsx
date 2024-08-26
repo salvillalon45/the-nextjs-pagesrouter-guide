@@ -9,7 +9,7 @@ export async function getServerSideProps() {
 
 	const res = await fetch(
 		// `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
-		`'https://jsonplaceholder.typicode.com/posts`
+		`https://jsonplaceholder.typicode.com/posts`
 	);
 	const data = (await res.json()) as Posts;
 
