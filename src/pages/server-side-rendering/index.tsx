@@ -1,4 +1,5 @@
 import { Posts } from '@/types/types';
+import { BASE_API_URL } from '@/utils/constants';
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
@@ -7,7 +8,7 @@ export async function getServerSideProps() {
 	console.log('Runs on every request to the page');
 	console.log('---------------------------');
 
-	const res = await fetch('http://localhost:3000/api/posts');
+	const res = await fetch(`${BASE_API_URL}/api/posts`);
 	const data = (await res.json()) as Posts;
 
 	return {
@@ -32,7 +33,7 @@ function ServerSideRenderingExample({
 	async function handleNewPost(event: { preventDefault: () => void }) {
 		event.preventDefault();
 
-		await fetch('http://localhost:3000/api/posts', {
+		await fetch(`${BASE_API_URL}/api/posts`, {
 			method: 'POST',
 			body: JSON.stringify({
 				title: newPostTitle,
@@ -49,7 +50,7 @@ function ServerSideRenderingExample({
 
 	useEffect(() => {
 		async function handleGetPosts() {
-			const res = await fetch('http://localhost:3000/api/posts');
+			const res = await fetch(`${BASE_API_URL}/api/posts`);
 			const data = (await res.json()) as Posts;
 
 			setPosts(data);

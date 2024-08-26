@@ -2,13 +2,15 @@ import { Blogs } from '@/types/types';
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../../styles/Blogs.module.css';
+import { BASE_API_URL } from '@/utils/constants';
 
 // This function runs at build time
 export async function getStaticProps() {
 	console.log('---------------------------');
 	console.log('This runs only on build!');
 	console.log('---------------------------');
-	const res = await fetch('http://localhost:3000/api/blogs');
+	console.log({ BASE_API_URL });
+	const res = await fetch(`${BASE_API_URL}/api/blogs`);
 	const data = (await res.json()) as Blogs;
 
 	return {
@@ -26,6 +28,9 @@ function StaticSiteGenerationExample({
 	data
 }: StaticSiteGenerationExampleProps) {
 	const blogs = data;
+
+	console.log('what is window.document.URL');
+	console.log(window.document.URL);
 
 	return (
 		<>
