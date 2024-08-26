@@ -8,7 +8,8 @@ export async function getServerSideProps() {
 	console.log('---------------------------');
 
 	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
+		// `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
+		`'https://jsonplaceholder.typicode.com/posts`
 	);
 	const data = (await res.json()) as Posts;
 
@@ -51,8 +52,11 @@ function ServerSideRenderingExample({
 
 	useEffect(() => {
 		async function handleGetPosts() {
+			// const res = await fetch(
+			// 	`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
+			// );
 			const res = await fetch(
-				`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
+				`'https://jsonplaceholder.typicode.com/posts`
 			);
 			const data = (await res.json()) as Posts;
 
