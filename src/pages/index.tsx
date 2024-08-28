@@ -11,7 +11,8 @@ export default function Home() {
 				<meta name='keywords' content='the nextjs guide' />
 			</Head>
 
-			<h1 className={title}>The Next.js Guide</h1>
+			<h1 className={title}>The Next.js Guide: Pages Router</h1>
+			<p>Date {new Date().getTime()}</p>
 
 			<div className='flex flex-col gap-5'>
 				<p className={text}>

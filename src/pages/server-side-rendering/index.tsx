@@ -51,11 +51,8 @@ function ServerSideRenderingExample({
 
 	useEffect(() => {
 		async function handleGetPosts() {
-			// const res = await fetch(
-			// 	`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
-			// );
 			const res = await fetch(
-				`'https://jsonplaceholder.typicode.com/posts`
+				`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
 			);
 			const data = (await res.json()) as Posts;
 

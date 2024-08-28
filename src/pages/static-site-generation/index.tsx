@@ -34,6 +34,8 @@ export async function getStaticProps() {
 	// 		body: "The first attempt to manufacture graphite sticks from powdered graphite was in Nuremberg, Germany, in 1662. It used a mixture of graphite, sulphur, and antimony. English and German pencils were not available to the French during the Napoleonic Wars; France, under naval blockade imposed by Great Britain, was unable to import the pure graphite sticks from the British Grey Knotts mines – the only known source in the world. France was also unable to import the inferior German graphite pencil substitute. It took the efforts of an officer in Napoleon's army to change this. In 1795, Nicolas-Jacques Conté discovered a method of mixing powdered graphite with clay and forming the mixture into rods that were then fired in a kiln. By varying the ratio of graphite to clay, the hardness of the graphite rod could also be varied. This method of manufacture, which had been earlier discovered by the Austrian Joseph Hardtmuth, the founder of the Koh-I-Noor in 1790, remains in use. In 1802, the production of graphite leads from graphite and clay was patented by the Koh-I-Noor company in Vienna. In England, pencils continued to be made from whole sawn graphite. Henry Bessemer's first successful invention (1838) was a method of compressing graphite powder into solid graphite thus allowing the waste from sawing to be reused."
 	// 	}
 	// ];
+	// console.log('what is window.document.URL');
+	// console.log(window.document.URL);
 
 	return {
 		props: {
