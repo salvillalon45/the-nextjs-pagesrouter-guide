@@ -12,7 +12,6 @@ export default function Home() {
 			</Head>
 
 			<h1 className={title}>The Next.js Guide: Pages Router</h1>
-			<p>Date {new Date().getTime()}</p>
 
 			<div className='flex flex-col gap-5'>
 				<p className={text}>
