@@ -72,7 +72,7 @@ function HydrationErrors() {
 
 					<div>
 						<p>
-							<b>Don't use Client-Side properties!</b>
+							<b>Do not use Client-Side properties!</b>
 						</p>
 						<p>
 							Remember you cannot use `window` or `localStorage`.
