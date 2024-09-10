@@ -128,6 +128,21 @@ export default function Home() {
 							</li>
 						</ul>
 					</div>
+
+					<div>
+						<b>
+							<p>Learning about Reconciliation</p>
+						</b>
+						<ul>
+							<li>
+								<a href='https://www.educative.io/answers/what-is-the-concept-of-reconciliation-in-react'>
+									What is the concept of reconciliation in
+									React?
+								</a>{' '}
+								by educative.io
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</>
